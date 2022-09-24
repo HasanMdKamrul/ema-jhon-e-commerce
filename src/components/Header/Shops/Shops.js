@@ -10,6 +10,8 @@ const Shops = () => {
 
     const [products,setProducts] = useState([]);
 
+    const [cart,setCart] = useState([]);
+
 
     useEffect(()=>{
         // ** data loader 
@@ -27,7 +29,11 @@ const Shops = () => {
         loadProducts()
     }, []);
 
-    const handleAddToCart = (product)=> console.log(product)
+    const handleAddToCart = (product)=> {
+        const newCart = [...cart, product];
+
+        setCart(newCart);
+    }
 
     return (
         <div className='shop-container'>
@@ -40,6 +46,7 @@ const Shops = () => {
             <div className="cart-container">
                 {/* ** order summary component */}
                 <h1>This is order</h1>
+                <p>Selected products:{cart.length} </p>
             </div>
         </div>
     );

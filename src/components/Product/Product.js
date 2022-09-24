@@ -14,7 +14,7 @@ const Product = ({product,product:{name,id,seller,img,price,category,ratings},ha
                     <p>Ratings:{ratings}stars</p>
                 </div>
             </div>
-            <button onClick={()=>handleAddToCart(product)} className='cart-button'>Add To Cart</button>
+            <button type='button' onClick={()=>handleAddToCart(product)} className='cart-button'>Add To Cart</button>
         </div>
     );
 };
