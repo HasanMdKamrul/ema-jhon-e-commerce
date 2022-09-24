@@ -10,6 +10,7 @@ const Shops = () => {
 
     const [products,setProducts] = useState([]);
 
+
     useEffect(()=>{
         // ** data loader 
         const loadProducts = async ()=>{
@@ -24,14 +25,16 @@ const Shops = () => {
         };
 
         loadProducts()
-    }, [])
+    }, []);
+
+    const handleAddToCart = (product)=> console.log(product)
 
     return (
         <div className='shop-container'>
             <div className="products-container">
                 {/* ** Products container(products card will be here) */}
                 {
-                    products?.map(product => <Product product={product}></Product>)
+                    products?.map(product => <Product handleAddToCart={handleAddToCart} key={product.id} product={product}></Product>)
                 }
             </div>
             <div className="cart-container">
