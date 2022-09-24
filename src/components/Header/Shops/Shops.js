@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import Product from '../../Product/Product';
 import './Shops.css';
+
+
+// ** Shop ta total container componet -> 2 componet child will be inside it 
+
 const Shops = () => {
     // ** data load state 
 
@@ -24,9 +29,13 @@ const Shops = () => {
     return (
         <div className='shop-container'>
             <div className="products-container">
-                <h1>This is Shop: {products.length}</h1>
+                {/* ** Products container(products card will be here) */}
+                {
+                    products?.map(product => <Product product={product}></Product>)
+                }
             </div>
-            <div className="cart-container" style={{border: "2px solid grey",height:"100vh"}}>
+            <div className="cart-container">
+                {/* ** order summary component */}
                 <h1>This is order</h1>
             </div>
         </div>

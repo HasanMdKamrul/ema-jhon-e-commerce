@@ -2,3 +2,11 @@
   display: grid;
   grid-template-columns: 9fr 3fr;
 }
+.products-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 52px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 200px;
+}
