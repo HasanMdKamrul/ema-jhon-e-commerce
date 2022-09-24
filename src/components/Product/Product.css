@@ -1,7 +1,9 @@
 .card {
   width: 300px;
   height: 508px;
-  border: 1px solid bisque;
+  border: 1px solid #95a0a7;
+  position: relative;
+  border-radius: 8px;
 }
 
 .card img {
@@ -10,6 +12,7 @@
   padding-top: 7px;
   padding-left: 7px;
   padding-right: 7px;
+  border-radius: 8px;
 }
 
 .product-name {
@@ -17,9 +20,28 @@
   font-style: normal;
   font-weight: 400;
   font-size: 21px;
-  line-height: 25px;
+  margin-top: 12px;
+  margin-bottom: 0px;
+  position: relative;
 }
 
 .product-content {
   margin-left: 14px;
+  margin-top: 12px;
+}
+
+.cart-button {
+  width: 100%;
+  background-color: #ffe0b3;
+  width: 300px;
+  height: 48px;
+  border: none;
+  border-radius: 0px 0px 8px 8px;
+  position: absolute;
+  bottom: 0;
+  color: ;
+}
+
+.cart-button:hover {
+  background-color: #dcbf93;
 }
