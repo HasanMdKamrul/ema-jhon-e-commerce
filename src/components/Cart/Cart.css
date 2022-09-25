@@ -1,0 +1,14 @@
+.cart h1 {
+  margin-left: 45px;
+  margin-top: 28px;
+  margin-right: 45px;
+}
+
+.cart {
+  position: sticky;
+  top: 0;
+}
+
+.calculation {
+  margin: 30px;
+}
