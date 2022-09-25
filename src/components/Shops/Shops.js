@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { setLsData } from '../../utilities/manageDb';
+import { getLsData, setLsData } from '../../utilities/manageDb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shops.css';
@@ -30,6 +30,21 @@ const Shops = () => {
 
         loadProducts()
     }, []);
+
+    // ** get the stored data
+
+    useEffect(()=>{
+        // ** get stored data
+        const storedCart = getLsData();
+        
+        for (const key in storedCart) {
+            
+            const addedProduct = products.find(product => product.id === key);
+
+            console.log(addedProduct)
+        }
+
+    },[])
 
     const handleAddToCart = (product)=> {
         const newCart = [...cart, product];

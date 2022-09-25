@@ -2,7 +2,7 @@ import React from 'react';
 import './Cart.css';
 
 const Cart = ({cart}) => {
-    console.table(cart)
+    // console.table(cart)
     const totalPrice = cart.reduce((previousValue,currentValue)=> previousValue + currentValue.price,0);
     const totalShipping = cart.reduce((previousValue,currentValue)=> previousValue + currentValue.shipping,0);
     const tax = +((totalPrice * 0.1).toFixed(2));

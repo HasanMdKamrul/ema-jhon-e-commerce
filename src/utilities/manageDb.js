@@ -28,4 +28,8 @@ const setLsData = (id)=>{
 };
 
 
-export { setLsData };
+export {
+    setLsData,
+    getLsData
+};
+
