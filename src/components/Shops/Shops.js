@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { setLsData } from '../../utilities/manageDb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shops.css';
@@ -32,8 +33,9 @@ const Shops = () => {
 
     const handleAddToCart = (product)=> {
         const newCart = [...cart, product];
-
         setCart(newCart);
+        // ** store the data to ls
+        setLsData(product.id)
     }
 
     return (
