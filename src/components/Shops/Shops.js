@@ -34,17 +34,25 @@ const Shops = () => {
     // ** get the stored data
 
     useEffect(()=>{
-        // ** get stored data
+       
+        // ** get the ls data
+
         const storedCart = getLsData();
-        
+        const cartProducts = [];
+
         for (const key in storedCart) {
-            
-            const addedProduct = products.find(product => product.id === key);
+           
+            const addedProducts = products.find(product => product.id === key);
 
-            console.log(addedProduct)
-        }
+            if (addedProducts) {
+                addedProducts.quantity = storedCart[key];
+                cartProducts.push(addedProducts);
+            };
+        };
 
-    },[])
+        setCart(cartProducts)
+
+    },[products])
 
     const handleAddToCart = (product)=> {
         const newCart = [...cart, product];
