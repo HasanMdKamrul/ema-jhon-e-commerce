@@ -34,28 +34,33 @@ const Shops = () => {
     // ** get the stored data
 
     useEffect(()=>{
-       
         // ** get the ls data
-
         const storedCart = getLsData();
-        const cartProducts = [];
-
-        for (const key in storedCart) {
-           
-            const addedProducts = products.find(product => product.id === key);
-
-            if (addedProducts) {
-                addedProducts.quantity = storedCart[key];
-                cartProducts.push(addedProducts);
-            };
+        const newCartFromLs = [];
+        for (const id in storedCart) {
+            const addedProductsToLs = products.find(product => product.id === id);
+            if (addedProductsToLs) {
+                addedProductsToLs.quantity = storedCart[id];
+                newCartFromLs.push(addedProductsToLs);
+            }
         };
-
-        setCart(cartProducts)
-
+        setCart(newCartFromLs);
     },[products])
 
     const handleAddToCart = (product)=> {
-        const newCart = [...cart, product];
+
+        const existedCartProduct = cart.find(cartProduct => cartProduct.id === product.id);
+        let newCart = [];
+        if (!existedCartProduct) {
+            product.quantity = product.quantity + 1;
+            newCart = [...cart,product];
+        } else{
+            const rest = cart.filter( cartProduct => cartProduct.id !== existedCartProduct.id);
+            existedCartProduct.quantity = existedCartProduct.quantity + 1;
+            newCart = [...rest,existedCartProduct]
+        }
+
+        // const newCart = [...cart, product];
         setCart(newCart);
         // ** store the data to ls
         setLsData(product.id)
