@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { getLsData, setLsData } from '../../utilities/manageDb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
@@ -10,26 +11,10 @@ import './Shops.css';
 const Shops = () => {
     // ** data load state 
 
-    const [products,setProducts] = useState([]);
+   const products = useLoaderData();
 
     const [cart,setCart] = useState([]);
 
-
-    useEffect(()=>{
-        // ** data loader 
-        const loadProducts = async ()=>{
-            try {
-                const response = await fetch(`products.json`);
-                response.ok ? console.log('Successful') : console.log('failed');
-                const data = await response.json();
-                setProducts(data)
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        loadProducts()
-    }, []);
 
     // ** get the stored data
 
