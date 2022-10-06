@@ -20,7 +20,7 @@ const router = createBrowserRouter([
             {
                 path: '/orders',
                 element: <Orders/>,
-                loader: async ()=> await (ProductsAndCartLoaders()),
+                loader: ProductsAndCartLoaders,
             },
             {
                 path: '/inventory',
