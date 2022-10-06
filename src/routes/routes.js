@@ -4,6 +4,7 @@ import Inventory from "../components/Inventory/Inventory";
 import Orders from "../components/Orders/Orders";
 import Shops from '../components/Shops/Shops';
 import Main from "../layouts/Main";
+import { ProductsAndCartLoaders } from "../loaders/ProductsAndCartLoaders";
 
 
 const router = createBrowserRouter([
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
             {
                 path: '/orders',
                 element: <Orders/>,
-                loader: ()=> fetch(`products.json`),
+                loader: async ()=> await (ProductsAndCartLoaders()),
             },
             {
                 path: '/inventory',

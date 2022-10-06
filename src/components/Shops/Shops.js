@@ -9,9 +9,9 @@ import './Shops.css';
 // ** Shop ta total container componet -> 2 componet child will be inside it 
 
 const Shops = () => {
-    // ** data load state 
+    // ** data load  
 
-   const products = useLoaderData();
+    const products = useLoaderData();
 
     const [cart,setCart] = useState([]);
 
