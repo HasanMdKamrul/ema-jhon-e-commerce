@@ -4,8 +4,7 @@
   border-radius: 8px;
   width: 571px;
   height: 107px;
-  margin: 0 auto;
-  margin-bottom: 21px;
+  margin: 21px auto;
 }
 .order-img-container img {
   width: 91px;
@@ -39,4 +38,5 @@
   width: 37px;
   height: 37px;
   color: #eb5757;
+  cursor: pointer;
 }

@@ -27,9 +27,22 @@ const setLsData = (id)=>{
     }
 };
 
+const deleteDataFromLs = (id)=>{
+    // ** get the ls data
+
+    const storedData = getLsData();
+    
+    if (id in storedData) {
+        delete storedData[id];
+        localStorage.setItem('shopping-cart', JSON.stringify(storedData))
+    }
+
+}
+
 
 export {
     setLsData,
-    getLsData
+    getLsData,
+    deleteDataFromLs
 };
 
