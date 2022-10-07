@@ -28,6 +28,7 @@ const ReviewItem = ({ deleteHandler,product: { id,price, name, img, quantity, sh
           </button>
         </div>
       </div>
+      
     </div>
   );
 };

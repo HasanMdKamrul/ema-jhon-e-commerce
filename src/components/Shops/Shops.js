@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { clearDataFromLs, getLsData, setLsData } from '../../utilities/manageDb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
@@ -68,7 +68,11 @@ const Shops = () => {
             </div>
             <div className="cart-container">
                 {/* ** order summary component */}
-               <Cart clearCartHandler={clearCartHandler} cart={cart}></Cart>
+               <Cart clearCartHandler={clearCartHandler} cart={cart}>
+                <Link to='/orders'>
+                    <button>Review Orders</button>
+                </Link>
+               </Cart>
             </div>
         </div>
     );

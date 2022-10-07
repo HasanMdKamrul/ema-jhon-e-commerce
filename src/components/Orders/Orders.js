@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { clearDataFromLs, deleteDataFromLs } from "../../utilities/manageDb";
 import Cart from "../Cart/Cart";
 import ReviewItem from "../ReviewItem/ReviewItem";
@@ -30,6 +30,9 @@ const Orders = () => {
         {
             cart.map(product => <ReviewItem deleteHandler={deleteHandler} product={product} key={product.id}/>)
         }
+      {
+        cart.length === 0 && <h1>No items Found,<Link to='/'>Click to Shop!</Link></h1>
+      }
       </div>
       <div className="cart-container">
         <Cart clearCartHandler={clearCartHandler} cart={cart} />
