@@ -1,7 +1,7 @@
 import React from 'react';
 import './Cart.css';
 
-const Cart = ({cart}) => {
+const Cart = ({cart,clearCartHandler}) => {
 
     const quantity = cart.reduce((previousValue,currentValue)=> previousValue + currentValue.quantity,0)
     const totalPrice = cart.reduce((previousValue,currentValue)=> previousValue + (currentValue.price * currentValue.quantity),0);
@@ -18,6 +18,7 @@ const Cart = ({cart}) => {
                 <p>Total Shipping Charge: ${totalShipping} </p>
                 <p>Tax: ${tax} </p>
                 <h5>Grand Total: ${grandTotal} </h5>
+                <button onClick={clearCartHandler}>Clear Cart</button>
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { getLsData, setLsData } from '../../utilities/manageDb';
+import { clearDataFromLs, getLsData, setLsData } from '../../utilities/manageDb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shops.css';
@@ -14,6 +14,13 @@ const Shops = () => {
     const products = useLoaderData();
 
     const [cart,setCart] = useState([]);
+
+    const clearCartHandler = ()=>{
+        // ** clear from UI
+        setCart([]);
+        // ** clear from db as well
+        clearDataFromLs();
+    }
 
 
     // ** get the stored data
@@ -61,7 +68,7 @@ const Shops = () => {
             </div>
             <div className="cart-container">
                 {/* ** order summary component */}
-               <Cart cart={cart}></Cart>
+               <Cart clearCartHandler={clearCartHandler} cart={cart}></Cart>
             </div>
         </div>
     );

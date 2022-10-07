@@ -13,10 +13,13 @@ const ReviewItem = ({ deleteHandler,product: { id,price, name, img, quantity, sh
         <div className="order-content-text">
           <p>{name}</p>
           <p>
-            <small>Price:{price}</small>
+            <small>Price:${price}</small>
           </p>
           <p>
             <small>Quantity:{quantity}</small>
+          </p>
+          <p>
+            <small>Shipping:${shipping}</small>
           </p>
         </div>
         <div>

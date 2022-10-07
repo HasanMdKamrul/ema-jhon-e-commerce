@@ -37,12 +37,17 @@ const deleteDataFromLs = (id)=>{
         localStorage.setItem('shopping-cart', JSON.stringify(storedData))
     }
 
+};
+
+const clearDataFromLs = ()=>{
+    localStorage.removeItem('shopping-cart')
 }
 
 
 export {
     setLsData,
     getLsData,
-    deleteDataFromLs
+    deleteDataFromLs,
+    clearDataFromLs
 };
 
