@@ -7,6 +7,8 @@ import './Header.css';
 const Header = () => {
 
     const {user} = useContext(AuthContext);
+
+    console.log(user)
   
     return (
         <nav className='header'>
@@ -19,7 +21,7 @@ const Header = () => {
                 <NavLink to="/login">LogIn</NavLink>
                 <NavLink to="/signup">SignUp</NavLink>
                 {
-                    user?.displayName
+                    user?.email
                 }
             </div>
         </nav>
