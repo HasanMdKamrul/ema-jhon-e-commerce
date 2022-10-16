@@ -1,0 +1,81 @@
+.form-container {
+  width: 500px;
+  height: 600px;
+  background: #ffffff;
+  border: 1px solid #95a0a7;
+  border-radius: 8px;
+  margin: 20px auto;
+  padding: 45px;
+}
+
+.form-control {
+  margin-bottom: 20px;
+}
+
+.form-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 42px;
+  letter-spacing: 0.0025em;
+  color: #2a414f;
+  text-align: center;
+  margin-top: 38px;
+  margin-bottom: 29px;
+}
+
+.form-container label {
+  display: block;
+  width: 41px;
+  height: 20px;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 20px;
+  letter-spacing: 0.0015em;
+  margin: 0px 42px;
+  color: #2a414f;
+}
+
+.form-container input {
+  width: 415px;
+  height: 55px;
+  border: 1px solid #95a0a7;
+  border-radius: 5px;
+  margin: 0px 42px;
+  font-size: 1.5rem;
+  padding-left: 10px;
+}
+
+.btn-submit {
+  width: 430px;
+  height: 55px;
+  background: rgba(255, 153, 0, 0.3);
+  border-radius: 5px;
+  margin: 0px 42px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  letter-spacing: 0.0015em;
+  color: #0e161a;
+  border: none;
+}
+
+.btn-submit:hover {
+  background: rgba(255, 153, 0, 0.6);
+}
+
+.signup-text {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.0025em;
+  color: #2a414f;
+}
+
+.link-text {
+  color: rgba(255, 153, 0, 1);
+}
