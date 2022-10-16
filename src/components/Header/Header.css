@@ -24,3 +24,12 @@
 .header a:hover {
   color: orange;
 }
+
+.btn-signout {
+  padding: 5px 20px;
+  background-color: rgb(74, 122, 143);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  margin-right: 20px;
+}

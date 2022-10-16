@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 import Logo from '../../images/Logo.svg';
@@ -6,9 +6,20 @@ import './Header.css';
 
 const Header = () => {
 
-    const {user} = useContext(AuthContext);
+    const {user,signOutFunctionality} = useContext(AuthContext);
+    const [error,setError] = useState('')
 
-    console.log(user)
+    const handleSignOut = ()=>{
+        const signoutFunc = async ()=>{
+            try {
+                await signOutFunctionality();
+            } catch (error) {
+                console.log(error)
+                setError(error)
+            }
+        };
+        signoutFunc()
+    }
   
     return (
         <nav className='header'>
@@ -20,6 +31,7 @@ const Header = () => {
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/login">LogIn</NavLink>
                 <NavLink to="/signup">SignUp</NavLink>
+                <button onClick={handleSignOut} className='btn-signout'>SignOut</button>
                 {
                     user?.email
                 }

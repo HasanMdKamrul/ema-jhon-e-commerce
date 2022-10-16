@@ -44,7 +44,17 @@ const SignUp = () => {
             return;
         }
 
-        signUp(email,password);
+        const signUpFunctionality = async ()=>{
+            try {
+                const result = signUp(email,password);
+                console.log('User Signed Up', result.user);
+            } catch (error) {
+                console.log(error)
+                setError(error)
+            }
+        };
+
+        signUpFunctionality();
     }
 
   return (

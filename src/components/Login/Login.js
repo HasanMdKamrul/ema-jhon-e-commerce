@@ -1,13 +1,47 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/UserContext";
 import "./Login.css";
 
 const Login = () => {
+
+    const {logIn} = useContext(AuthContext);
+
+    const [error,setError] = useState('');
+
+    const submitHandle = event=>{
+        event.preventDefault();
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+       
+
+        console.log(email,password);
+
+        // ** login
+
+       const logInFunctionality = async()=>{
+        try {
+            await  logIn(email,password);
+            console.log('Logged In user')
+        } catch (error) {
+            setError(error)
+            console.log(error)
+        }
+       };
+
+       logInFunctionality()
+       
+
+        
+    }
+
   return (
     <div className="form-container">
       <h3 className="form-title">Login</h3>
 
-      <form className="form-filed">
+      <form onSubmit={submitHandle} className="form-filed">
         <div className="form-control">
           <label htmlFor="email">Email</label>
           <input type="email" name="email" id="email" />
