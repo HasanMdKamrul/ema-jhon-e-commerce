@@ -15,7 +15,7 @@ const Header = () => {
                 await signOutFunctionality();
             } catch (error) {
                 console.log(error)
-                setError(error)
+                setError(error.message)
             }
         };
         signoutFunc()
@@ -29,11 +29,15 @@ const Header = () => {
                 <NavLink to="/orders">Orders</NavLink>
                 <NavLink to="inventory">Inventory</NavLink>
                 <NavLink to="/about">About</NavLink>
-                <NavLink to="/login">LogIn</NavLink>
-                <NavLink to="/signup">SignUp</NavLink>
-                <button onClick={handleSignOut} className='btn-signout'>SignOut</button>
+               
+                
                 {
-                    user?.email
+                    user?.email ? <>
+                   
+                     <button onClick={handleSignOut} className='btn-signout'>SignOut</button> 
+                     <span className='link-text'>{user.email}</span>
+                    </> : <> <NavLink to="/login">LogIn</NavLink>
+                    <NavLink to="/signup">SignUp</NavLink></>
                 }
             </div>
         </nav>

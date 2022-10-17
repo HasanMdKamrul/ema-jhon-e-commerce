@@ -48,6 +48,7 @@ const SignUp = () => {
             try {
                 const result = signUp(email,password);
                 console.log('User Signed Up', result.user);
+                form.reset()
             } catch (error) {
                 console.log(error)
                 setError(error)

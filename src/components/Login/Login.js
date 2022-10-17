@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
 import "./Login.css";
 
@@ -8,6 +8,8 @@ const Login = () => {
     const {logIn} = useContext(AuthContext);
 
     const [error,setError] = useState('');
+
+    const navigate = useNavigate();
 
     const submitHandle = event=>{
         event.preventDefault();
@@ -24,9 +26,11 @@ const Login = () => {
        const logInFunctionality = async()=>{
         try {
             await  logIn(email,password);
-            console.log('Logged In user')
+            console.log('Logged In user');
+            form.reset();
+            navigate('/')
         } catch (error) {
-            setError(error)
+            setError(error.message)
             console.log(error)
         }
        };
@@ -36,6 +40,8 @@ const Login = () => {
 
         
     }
+
+    console.log(error)
 
   return (
     <div className="form-container">
@@ -53,6 +59,9 @@ const Login = () => {
         <button className="btn-submit" type="submit">Login</button>
       </form>
       <p className="signup-text">New to Ema-john? <Link className="link-text" to = '/signup'>Create New Account</Link> </p>
+      <small className="link-text">
+        {error}
+      </small>
     </div>
   );
 };
