@@ -18,7 +18,7 @@ const Cart = ({cart,clearCartHandler,children}) => {
                 <p>Total Shipping Charge: ${totalShipping} </p>
                 <p>Tax: ${tax} </p>
                 <h5>Grand Total: ${grandTotal} </h5>
-                <button onClick={clearCartHandler}>Clear Cart</button>
+                {/* <button onClick={clearCartHandler}>Clear Cart</button> */}
                 {children}
             </div>
         </div>

@@ -35,7 +35,11 @@ const Orders = () => {
       }
       </div>
       <div className="cart-container">
-        <Cart clearCartHandler={clearCartHandler} cart={cart} />
+        <Cart clearCartHandler={clearCartHandler} cart={cart} >
+        <Link to='/shipping'>
+                    <button>Proceed Shipping</button>
+                </Link>
+        </Cart>
       </div>
     </div>
   );
