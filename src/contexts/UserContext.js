@@ -9,12 +9,14 @@ const auth = getAuth(app);
 
 const UserContext = ({children}) => {
 
+    const [loading,setLoading] = useState(true)
     const [user,setUser] = useState(null)
 
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
             console.log(currentUser);
             setUser(currentUser);
+            setLoading(false)
             console.log("User Logged In")
         });
 
@@ -27,7 +29,7 @@ const UserContext = ({children}) => {
     const signOutFunctionality = ()=> signOut(auth);
 
 
-    const authInfo = {signUp,user,logIn,signOutFunctionality};
+    const authInfo = {signUp,user,logIn,signOutFunctionality, loading};
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
