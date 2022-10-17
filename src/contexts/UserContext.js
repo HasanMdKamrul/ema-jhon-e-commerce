@@ -14,7 +14,7 @@ const UserContext = ({children}) => {
 
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
-            console.log(currentUser);
+            
             setUser(currentUser);
             setLoading(false)
             console.log("User Logged In")
@@ -24,9 +24,18 @@ const UserContext = ({children}) => {
 
     },[])
     
-    const signUp = (email,password)=> createUserWithEmailAndPassword(auth,email,password);
-    const logIn = (email,password)=> signInWithEmailAndPassword(auth,email,password);
-    const signOutFunctionality = ()=> signOut(auth);
+    const signUp = (email,password)=> {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth,email,password)
+    };
+    const logIn = (email,password)=> {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth,email,password);
+    }
+    const signOutFunctionality = ()=> {
+        setLoading(true);
+        return signOut(auth)
+    };
 
 
     const authInfo = {signUp,user,logIn,signOutFunctionality, loading};
