@@ -9,7 +9,7 @@ export const ProductsAndCartLoaders = async () => {
   // ** get all the products from the main Api
 
   const productsData = await fetch(`http://localhost:15000/products`);
-  const products = await productsData.json();
+  const { products } = await productsData.json();
 
   // ** cart populate korbo ami jegla cart a add korsi oglar upor depend kore
 

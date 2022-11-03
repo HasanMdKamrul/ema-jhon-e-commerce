@@ -14,7 +14,26 @@ import "./Shops.css";
 const Shops = () => {
   // ** data load
 
-  const products = useLoaderData();
+  const { count, products } = useLoaderData();
+
+  //   ** number of pages
+
+  const [dataSize, setDataSize] = useState(10);
+
+  //   ** current page number
+
+  const [currentPage, setCurrentPage] = useState(0);
+
+  // ** total number of pages
+
+  const numberOfPages = Math.ceil(count / dataSize);
+
+  // ** pagination
+
+  // ** total data count -> 76 -> done
+  // ** perPage data -> 10
+  //   ** page count -> 76/10 -> Math.celi(76/10) -> koto gula page hobe
+  // ** page number -> kon page a asi
 
   const [cart, setCart] = useState([]);
 
@@ -82,6 +101,21 @@ const Shops = () => {
             <button>Review Orders</button>
           </Link>
         </Cart>
+      </div>
+
+      <div className="pagination">
+        <div>
+          <p>Currently selected page : {currentPage}</p>
+          {[...Array(numberOfPages).keys()].map((number) => (
+            <button
+              className={number === currentPage && "selected"}
+              onClick={() => setCurrentPage(number)}
+              key={number}
+            >
+              {number}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
