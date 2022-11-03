@@ -11,34 +11,40 @@ const Orders = () => {
 
   const [cart, setCart] = useState(cartData);
 
-  const clearCartHandler = ()=>{
+  const clearCartHandler = () => {
     // ** clear from UI
     setCart([]);
     // ** clear from db as well
     clearDataFromLs();
-}
+  };
 
-  const deleteHandler = id => {
-    const remainingProducts = cart.filter(product => product.id !== id);
+  const deleteHandler = (id) => {
+    const remainingProducts = cart.filter((product) => product._id !== id);
     setCart(remainingProducts);
-    deleteDataFromLs(id)
-  }
+    deleteDataFromLs(id);
+  };
 
   return (
     <div className="shop-container">
       <div className="orders-container">
-        {
-            cart.map(product => <ReviewItem deleteHandler={deleteHandler} product={product} key={product.id}/>)
-        }
-      {
-        cart.length === 0 && <h1>No items Found,<Link to='/'>Click to Shop!</Link></h1>
-      }
+        {cart.map((product) => (
+          <ReviewItem
+            deleteHandler={deleteHandler}
+            product={product}
+            key={product._id}
+          />
+        ))}
+        {cart.length === 0 && (
+          <h1>
+            No items Found,<Link to="/">Click to Shop!</Link>
+          </h1>
+        )}
       </div>
       <div className="cart-container">
-        <Cart clearCartHandler={clearCartHandler} cart={cart} >
-        <Link to='/shipping'>
-                    <button>Proceed Shipping</button>
-                </Link>
+        <Cart clearCartHandler={clearCartHandler} cart={cart}>
+          <Link to="/shipping">
+            <button>Proceed Shipping</button>
+          </Link>
         </Cart>
       </div>
     </div>

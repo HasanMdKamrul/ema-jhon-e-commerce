@@ -5,49 +5,52 @@ import Login from "../components/Login/Login";
 import Orders from "../components/Orders/Orders";
 import PrivateRoutes from "../components/PrivateRotes/PrivateRoutes";
 import Shipping from "../components/Shipping/Shipping";
-import Shops from '../components/Shops/Shops';
+import Shops from "../components/Shops/Shops";
 import SignUp from "../components/SignUp/SignUp";
 import Main from "../layouts/Main";
 import { ProductsAndCartLoaders } from "../loaders/ProductsAndCartLoaders";
 
-
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <Main/>,
-        children:[
-            {
-                path: '/',
-                element: <Shops/>,
-                loader: ()=> fetch(`products.json`),
-            },
-            {
-                path:'login',
-                element: <Login/>
-            },
-            {
-                path:'/signup',
-                element: <SignUp/>
-            },
-            {
-                path: '/orders',
-                element: <Orders/>,
-                loader: ProductsAndCartLoaders,
-            },
-            {
-                path: '/inventory',
-                element: <Inventory/>
-            },
-            {
-                path: '/shipping',
-                element: <PrivateRoutes><Shipping/> </PrivateRoutes>
-            },
-            {
-                path: '/about',
-                element: <About/>
-            },
-        ],
-    }
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
+        path: "/",
+        element: <Shops />,
+        loader: () => fetch(`http://localhost:15000/products`),
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+      {
+        path: "/orders",
+        element: <Orders />,
+        loader: ProductsAndCartLoaders,
+      },
+      {
+        path: "/inventory",
+        element: <Inventory />,
+      },
+      {
+        path: "/shipping",
+        element: (
+          <PrivateRoutes>
+            <Shipping />{" "}
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+    ],
+  },
 ]);
 
 export default router;

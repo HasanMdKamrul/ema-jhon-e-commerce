@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "ema-jhon-simple-40d0c",
   storageBucket: "ema-jhon-simple-40d0c.appspot.com",
   messagingSenderId: "135303085927",
-  appId: "1:135303085927:web:7a702d44d08624ae3539c2"
+  appId: "1:135303085927:web:7a702d44d08624ae3539c2",
 };
 
 // Initialize Firebase

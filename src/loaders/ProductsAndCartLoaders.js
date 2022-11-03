@@ -8,7 +8,7 @@ export const ProductsAndCartLoaders = async () => {
 
   // ** get all the products from the main Api
 
-  const productsData = await fetch(`products.json`);
+  const productsData = await fetch(`http://localhost:15000/products`);
   const products = await productsData.json();
 
   // ** cart populate korbo ami jegla cart a add korsi oglar upor depend kore
@@ -25,7 +25,7 @@ export const ProductsAndCartLoaders = async () => {
     // ** ekhon ei khane main products api theke localStorage a thaka id match kore kake kake add korsi sei product er full information ber kore nibo
     // ** er por main product jegla add hoise oglar quantity property update korbo using the saved quantity value in the localStorage
 
-    const addedProduct = products.find((product) => product.id === id);
+    const addedProduct = products.find((product) => product._id === id);
 
     if (addedProduct) {
       addedProduct.quantity = storedCart[id];

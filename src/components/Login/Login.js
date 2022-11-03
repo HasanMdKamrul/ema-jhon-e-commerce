@@ -4,49 +4,43 @@ import { AuthContext } from "../../contexts/UserContext";
 import "./Login.css";
 
 const Login = () => {
+  const location = useLocation();
 
-    const location = useLocation()
+  const from = location?.state?.from?.pathname;
 
-    const from = location?.state?.from?.pathname;
+  const { logIn } = useContext(AuthContext);
 
-    const {logIn} = useContext(AuthContext);
+  const [error, setError] = useState("");
 
-    const [error,setError] = useState('');
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const submitHandle = (event) => {
+    event.preventDefault();
 
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-    const submitHandle = event=>{
-        event.preventDefault();
+    console.log(email, password);
 
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-       
+    // ** login
 
-        console.log(email,password);
+    const logInFunctionality = async () => {
+      try {
+        await logIn(email, password);
+        console.log("Logged In user");
+        form.reset();
+        navigate(from, { replace: true } || "/");
+      } catch (error) {
+        setError(error.message);
+        console.log(error);
+      }
+    };
 
-        // ** login
+    logInFunctionality();
+  };
 
-       const logInFunctionality = async()=>{
-        try {
-            await  logIn(email,password);
-            console.log('Logged In user');
-            form.reset();
-            navigate(from, {replace: true} || '/' )
-        } catch (error) {
-            setError(error.message)
-            console.log(error)
-        }
-       };
-
-       logInFunctionality()
-       
-
-        
-    }
-
-    console.log(error)
+  console.log(error);
 
   return (
     <div className="form-container">
@@ -61,12 +55,17 @@ const Login = () => {
           <label htmlFor="password">Password</label>
           <input type="password" name="password" id="password" />
         </div>
-        <button className="btn-submit" type="submit">Login</button>
+        <button className="btn-submit" type="submit">
+          Login
+        </button>
       </form>
-      <p className="signup-text">New to Ema-john? <Link className="link-text" to = '/signup'>Create New Account</Link> </p>
-      <small className="link-text">
-        {error}
-      </small>
+      <p className="signup-text">
+        New to Ema-john?{" "}
+        <Link className="link-text" to="/signup">
+          Create New Account
+        </Link>{" "}
+      </p>
+      <small className="link-text">{error}</small>
     </div>
   );
 };
