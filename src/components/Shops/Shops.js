@@ -73,14 +73,31 @@ const Shops = () => {
     // ** get the ls data
     const storedCart = getLsData();
     const newCartFromLs = [];
-    for (const id in storedCart) {
-      const addedProductsToLs = products.find((product) => product._id === id);
-      if (addedProductsToLs) {
-        addedProductsToLs.quantity = storedCart[id];
-        newCartFromLs.push(addedProductsToLs);
-      }
-    }
-    setCart(newCartFromLs);
+
+    const ids = Object.keys(storedCart);
+
+    // ** ids gula pathay dibo using post method
+
+    fetch("http://localhost:15000/productsByIds", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(ids),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        for (const id in storedCart) {
+          const addedProductsToLs = data.find((product) => product._id === id);
+          if (addedProductsToLs) {
+            addedProductsToLs.quantity = storedCart[id];
+            newCartFromLs.push(addedProductsToLs);
+          }
+        }
+        setCart(newCartFromLs);
+      })
+      .catch((e) => console.log(e));
   }, [products]);
 
   const handleAddToCart = (product) => {
